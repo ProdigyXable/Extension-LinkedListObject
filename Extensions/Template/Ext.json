@@ -1,0 +1,169 @@
+{
+    "About": {
+        "Name": "Xable Linked List Object",
+        "Author": "Samuel Benton",
+        "Copyright": "Copyright © 2014 Xable Enterprises",
+        "Comment": "This extension allows the easy implementation of linked lists and linked lists structures, such as stacks and queues, within MMFusion",
+        "URL": "",
+        "Help": "",
+        "Identifier": "PXLL"
+    },
+    "ActionMenu": 
+	[
+		["Node Insertion",
+		
+			[4,"Add Node to Start of List"],
+			[0,"Add Node to End of List"],
+			"Separator",
+			[5,"Add Node"],
+		],
+
+		["Node Removal",
+			[1,"Remove Front Node"],
+			[2,"Remove End Node"],
+			"Separator",
+			[3,"Remove Node"],
+			"Separator",
+			[6, "Erase Nodes"],
+		],
+
+		["Node Manipulation",
+			[7,"Swap Nodes"],
+			[8,"Reverse List"],
+			[9,"Reverse List Subsection"],
+
+		],
+    ],
+
+    "ConditionMenu": 
+	[
+		[0, "Is list empty?"],
+		"Separator",
+		[1,"Node just added?"],
+		[2,"Node just removed?"],
+		[3,"List just leared?"],
+		"Separator",
+	],
+
+    "ExpressionMenu": [
+	["Node Data",
+        [2,"Get Data from Start Node"],
+		[0,"Get Data from End Node"],
+		"Separator",
+		[3,"Get Data from Node"],
+	],
+		"Separator",
+		[1, "List Size"],
+		"Separator",
+    ],
+    "Actions": 
+	[
+        {"Title": "Add Node to end with data %0",
+            "Parameters": 
+			[
+				["Integer","Initial Data"]
+            ]
+        },
+		{"Title": "Remove Front Node",
+        },
+		{"Title": "Remove End Node",
+        },
+		{"Title": "Remove Node with index %0",
+            "Parameters": 
+			[
+				["Integer","Node Index"]
+            ]
+        },
+		{"Title": "Add Node to start with data %0",
+            "Parameters": 
+			[
+				["Integer","Initial Data"]
+            ]
+        },
+		{"Title": "Insert Node to index %0 with data %1",
+            "Parameters": 
+			[
+				["Integer","Node Index"],
+				["Integer","Initial Data"]
+            ]
+        },
+		{"Title": "Erase %1 node(s) starting with node %0",
+            "Parameters": 
+			[
+				["Integer","Node Index"],
+				["Integer","Erase Amount"]
+            ]
+        },
+		{"Title": "Swap node %0 with node %1",
+            "Parameters": 
+			[
+				["Integer","Node Index A"],
+				["Integer","Node Index B"]
+            ]
+        },
+		{"Title": "Reverse List",
+        },
+		{"Title": "Reverse List from index %0 to %1",
+            "Parameters": 
+			[
+				["Integer","Node Index A"],
+				["Integer","Node Index B"]
+            ]
+        },
+    ],
+    "Conditions": 
+	[
+		{
+			"Title": "%o : Is list empty?",
+            "Parameters":
+			[
+            ],
+            "Triggered": false
+        },
+		{
+			"Title": "%o : Node just added",
+            "Parameters":
+			[
+            ],
+            "Triggered": true
+        },
+		{
+			"Title": "%o : Node just removed",
+            "Parameters":
+			[
+            ],
+            "Triggered": true
+        },
+		{
+			"Title": "%o : List just cleared",
+            "Parameters":
+			[
+            ],
+            "Triggered": true
+        },
+    ],
+    "Expressions": 
+	[
+        {
+			"Title": "GetEndData(",
+			 "Returns": "Integer",
+        },
+		{
+			"Title": "ListSize(",
+			 "Returns": "Integer",
+        },
+		{
+			"Title": "GetStartData(",
+			 "Returns": "Integer",
+        },
+		{
+			"Title": "GetData(",
+			"Returns": "Integer",
+			"Parameters": 
+			[
+				["Integer","Node Index"],
+            ]
+			 
+        },
+    ]
+}
