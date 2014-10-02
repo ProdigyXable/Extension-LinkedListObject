@@ -214,6 +214,7 @@ public:
 		bool NodeInsertion();
 		bool NodeRemoval();
 		bool ListClear();
+		bool IndexBounds();
 
 
     /// Expressions

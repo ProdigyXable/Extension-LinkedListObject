@@ -42,6 +42,7 @@
 		[1,"Node just added?"],
 		[2,"Node just removed?"],
 		[3,"List just leared?"],
+		[4,"Index Bound Error"],
 		"Separator",
 	],
 
@@ -136,6 +137,13 @@
         },
 		{
 			"Title": "%o : List just cleared",
+            "Parameters":
+			[
+            ],
+            "Triggered": true
+		},        
+		{
+			"Title": "%o : Index boundary error",
             "Parameters":
 			[
             ],

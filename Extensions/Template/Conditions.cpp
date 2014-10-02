@@ -21,3 +21,8 @@ bool Extension::ListClear()
 {
 	return true;
 }
+
+bool Extension::IndexBounds()
+{
+	return true;
+}

@@ -23,6 +23,7 @@ struct EDITDATA
 #define NewNode 1
 #define RemovedNode 2
 #define ListCleared 3
+#define IndexError 4
 
 #include "Extension.h"
 

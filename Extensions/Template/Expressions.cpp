@@ -23,8 +23,7 @@ int Extension::getData(int index)
 
 	else if(index < 0 || index >= Extension::LinkedList::ListSize)
 	{
-		// Error: Out of bounds index
-
+		Runtime.GenerateEvent(IndexError);
 		return -1;
 	}
 

@@ -37,6 +37,7 @@ Extension::Extension(LPRDATA _rdPtr, LPEDATA edPtr, fpcob cobPtr)
 	LinkCondition(1, NodeInsertion);
 	LinkCondition(2, NodeRemoval);
 	LinkCondition(3, ListClear);
+	LinkCondition(4, IndexBounds);
 
 
 

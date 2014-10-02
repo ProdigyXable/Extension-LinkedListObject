@@ -30,13 +30,13 @@ void Extension::addAnyNode(int index, int value)
 
 	else if(index < 0 || index >= Extension::LinkedList::ListSize)
 	{
-		// Error: Out of bounds index
+		Runtime.GenerateEvent(IndexError);
 	}
 
 	else
 	{
 		Node * newNode = new Node(value);
-		Node * buffer = FusionLList.findNode(index);
+		Node * buffer = FusionLList.findNode(index - 1);
 
 		newNode->PrevNode = buffer;
 		newNode->NextNode = buffer->NextNode;
@@ -76,7 +76,7 @@ void Extension::removeAnyNode(int index)
 
 	else if(index < 0 || index >= LinkedList::ListSize)
 	{
-		// Error: Out of Index
+		Runtime.GenerateEvent(IndexError);
 	}
 
 	else
