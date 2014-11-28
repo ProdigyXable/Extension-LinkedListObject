@@ -16,12 +16,12 @@ int Extension::getData(int index)
 		return Extension::getStartData();
 	}
 
-	else if(index == Extension::LinkedList::ListSize)
+	else if(index == LinkedList::ListSize)
 	{
 		return Extension::getEndData();
 	}
 
-	else if(index < 0 || index >= Extension::LinkedList::ListSize)
+	else if(index < 0 || index >= LinkedList::ListSize)
 	{
 		Runtime.GenerateEvent(IndexError);
 		return -1;

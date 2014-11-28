@@ -3,71 +3,80 @@
         "Name": "Xable Linked List Object",
         "Author": "Samuel Benton",
         "Copyright": "Copyright © 2014 Xable Enterprises",
-        "Comment": "This extension allows the easy implementation of linked lists and linked lists structures, such as stacks and queues, within MMFusion",
-        "URL": "",
-        "Help": "",
+        "Comment": "This extension allows the easy implementation of non-circular linked lists and linked list structures, such as stacks and queues, within MMFusion.\n\n**Note**\n Nodes currently support only integer data values.",
+        "URL": "http://www.xable.us",
+        "Help": "http://www.xable.us",
         "Identifier": "PXLL"
     },
     "ActionMenu": 
 	[
 		["Node Insertion",
 		
-			[4,"Add Node to Start of List"],
+			[4,"Add Node to Beginning of List"],
 			[0,"Add Node to End of List"],
 			"Separator",
-			[5,"Add Node"],
+			[5,"Insert Node at node index"],
 		],
 
-		["Node Removal",
-			[1,"Remove Front Node"],
-			[2,"Remove End Node"],
+		["Node Deletion",
+			[1,"Remove Head/First Node"],
+			[2,"Remove Tail/Last Node"],
 			"Separator",
-			[3,"Remove Node"],
+			[3,"Remove Node via node index"],
 			"Separator",
-			[6, "Erase Nodes"],
+			[6, "Remove Multiple Nodes"],
 		],
 
 		["Node Manipulation",
 			[7,"Swap Nodes"],
-			[8,"Reverse List"],
-			[9,"Reverse List Subsection"],
-
+			[8,"Reverse Entire List"],
+			[9,"Reverse Subsection of List"],
 		],
     ],
 
     "ConditionMenu": 
 	[
-		[0, "Is list empty?"],
-		"Separator",
-		[1,"Node just added?"],
-		[2,"Node just removed?"],
-		[3,"List just leared?"],
-		[4,"Index Bound Error"],
+		["Node-based",
+			[1, "Node just added?"],
+			[2, "Node just removed?"],
+		],
+
+		["List-based",
+			[0, "Is list empty?"],
+			[3, "List just cleared?"],
+		],
+		
+		["Errors",
+			[4,"Index Bound Error"],
+		],
 		"Separator",
 	],
 
-    "ExpressionMenu": [
-	["Node Data",
-        [2,"Get Data from Start Node"],
-		[0,"Get Data from End Node"],
-		"Separator",
-		[3,"Get Data from Node"],
-	],
-		"Separator",
-		[1, "List Size"],
-		"Separator",
+    "ExpressionMenu": 
+	[
+		["Node Data",
+			[2,"Get Data from Head/First Node"],
+			[0,"Get Data from Tail/Last Node"],
+			"Separator",
+			[3,"Get Data from Node via node index"],
+		],
+
+		["List Data",
+			[1, "Get List Size"],
+		],
+			"Separator",
     ],
     "Actions": 
 	[
-        {"Title": "Add Node to end with data %0",
+        {"Title": "Add Node to list end with data %0",
             "Parameters": 
 			[
-				["Integer","Initial Data"]
+				["Integer","Data"]
             ]
         },
-		{"Title": "Remove Front Node",
+		{"Title": "Remove Head/Front Node",
         },
-		{"Title": "Remove End Node",
+		{"Title": "Remove Tail/End Node",
         },
 		{"Title": "Remove Node with index %0",
             "Parameters": 
@@ -75,24 +84,24 @@
 				["Integer","Node Index"]
             ]
         },
-		{"Title": "Add Node to start with data %0",
+		{"Title": "Add Node to list front with data %0",
             "Parameters": 
 			[
-				["Integer","Initial Data"]
+				["Integer","Data"]
             ]
         },
 		{"Title": "Insert Node to index %0 with data %1",
             "Parameters": 
 			[
 				["Integer","Node Index"],
-				["Integer","Initial Data"]
+				["Integer","Data"]
             ]
         },
-		{"Title": "Erase %1 node(s) starting with node %0",
+		{"Title": "Remove %1 consecutive node(s) starting with node %0",
             "Parameters": 
 			[
-				["Integer","Node Index"],
-				["Integer","Erase Amount"]
+				["Integer","Initial Node Index"],
+				["Integer","Number of Nodes to Delete"]
             ]
         },
 		{"Title": "Swap node %0 with node %1",
@@ -104,7 +113,7 @@
         },
 		{"Title": "Reverse List",
         },
-		{"Title": "Reverse List from index %0 to %1",
+		{"Title": "Reverse Subsection of List from index %0 to %1",
             "Parameters": 
 			[
 				["Integer","Node Index A"],
@@ -115,7 +124,7 @@
     "Conditions": 
 	[
 		{
-			"Title": "%o : Is list empty?",
+			"Title": "%o : Is list empty",
             "Parameters":
 			[
             ],

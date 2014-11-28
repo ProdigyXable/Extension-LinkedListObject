@@ -405,7 +405,7 @@ LPVOID WINAPI DLLExport GetPropValue(LPMV mV, LPEDATA edPtr, UINT nPropID)
 	switch (nPropID)
 	{
 		case Version:
-			return new CPropDataValue("October 1st, 2014");
+			return new CPropDataValue("November 28th, 2014");
 	}
 #endif // !defined(RUN_ONLY)
 	return NULL;

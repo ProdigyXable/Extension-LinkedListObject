@@ -22,13 +22,13 @@ void Extension::addAnyNode(int index, int value)
 		Runtime.GenerateEvent(NewNode);
 	}
 
-	else if(index == Extension::LinkedList::ListSize)
+	else if(index == LinkedList::ListSize)
 	{
 		FusionLList.addEnd(value);
 		Runtime.GenerateEvent(NewNode);
 	}
 
-	else if(index < 0 || index >= Extension::LinkedList::ListSize)
+	else if(index < 0 || index >= LinkedList::ListSize)
 	{
 		Runtime.GenerateEvent(IndexError);
 	}
@@ -43,7 +43,7 @@ void Extension::addAnyNode(int index, int value)
 
 		buffer->NextNode = buffer->NextNode->PrevNode = newNode;
 		
-		Extension::LinkedList::ListSize++;
+		LinkedList::ListSize++;
 		Runtime.GenerateEvent(NewNode);
 	}
 }
@@ -87,7 +87,7 @@ void Extension::removeAnyNode(int index)
 		buffer->NextNode->PrevNode = buffer->PrevNode;
 		
 		delete buffer;
-		Extension::LinkedList::ListSize--;
+		LinkedList::ListSize--;
 		Runtime.GenerateEvent(RemovedNode);
 	}
 }
@@ -106,22 +106,55 @@ void Extension::erase(int index, int amount)
 
 void Extension::swap(int indexA, int indexB)
 {
-	Node * a = FusionLList.findNode(indexA);
-	Node * b = FusionLList.findNode(indexB);
+	if(!(indexA < 0 || indexA > LinkedList::ListSize - 1 || indexB < 0 || indexB > LinkedList::ListSize - 1))
+	{
+		Node * a = FusionLList.findNode(min(indexA,indexB));
+		Node * b = FusionLList.findNode(max(indexA,indexB));
 
+		if((FusionLList.headNode->NextNode->sentinel == false) && !(a->NextNode == b || a->PrevNode == b) )
+		{
+			a->PrevNode->NextNode = b;
+			b->PrevNode->NextNode = a;
+	
+			a->NextNode->PrevNode = b;
+			b->NextNode->PrevNode = a;
 
-	// Content Copying
-	int buffer = a->getIntData();
-	a->setData(b->getIntData());
-	b->setData(buffer);
+			std::swap(a->NextNode, b->NextNode);
+			std::swap(a->PrevNode, b->PrevNode);
+
+			/*
+			// Content Copying
+			int buffer = a->getIntData();
+			a->setData(b->getIntData());
+			b->setData(buffer);
+			*/
+		}
+
+		else if(a->NextNode == b || a->PrevNode == b)
+		{
+			a->PrevNode->NextNode = b;
+			b->NextNode->PrevNode = a;
+
+			b->PrevNode = a->PrevNode;
+			a->NextNode = b->NextNode;
+			b->NextNode = a;
+			a->PrevNode = b;
+		}
+	}
+
+	else
+	{
+		Runtime.GenerateEvent(IndexError);
+	}
+	
 
 }
 
 void Extension::reverse()
 {
-	for(int i = 0; i < (Extension::LinkedList::ListSize + 1 )/2; i++)
+	for(int i = 0; i < (LinkedList::ListSize + 1 )/2; i++)
 	{
-		swap(i, (Extension::LinkedList::ListSize - (i + 1)));
+		swap(i, (LinkedList::ListSize - (i + 1)));
 	}
 }
 void Extension::reverseSection(int indexA, int indexB)
@@ -130,7 +163,7 @@ void Extension::reverseSection(int indexA, int indexB)
 	int temp = max(indexA,indexB);
 	
 	indexA = max(0, min(indexA,indexB));
-	indexB = min(temp, Extension::LinkedList::ListSize - 1);
+	indexB = min(temp, LinkedList::ListSize - 1);
 		
 	for(int i = 0; i < (indexB - indexA + 1)/2; i++)
 	{

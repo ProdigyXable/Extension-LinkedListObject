@@ -103,12 +103,12 @@ public:
 			}
 			~LinkedList()
 			{
-				for(int i = 0; i < Extension::LinkedList::ListSize; i++)
+				for(int i = 0; i < LinkedList::ListSize; i++)
 				{
 					removeFront();
 				}
 
-				Extension::LinkedList::ListSize = 0;
+				LinkedList::ListSize = 0;
 				delete headNode;
 				delete tailNode;
 
@@ -124,7 +124,7 @@ public:
 				tailNode->PrevNode->NextNode = buffer;
 				tailNode->PrevNode = buffer;
 				
-				++Extension::LinkedList::ListSize;
+				++LinkedList::ListSize;
 			}
 			void addFront(int value)
 			{
@@ -136,7 +136,7 @@ public:
 				headNode->NextNode->PrevNode = buffer;
 				headNode->NextNode = buffer;
 
-				++Extension::LinkedList::ListSize;
+				++LinkedList::ListSize;
 			}
 
 			void removeFront()
@@ -150,7 +150,7 @@ public:
 					buffer->NextNode->PrevNode = buffer->PrevNode;
 
 					delete buffer;
-					Extension::LinkedList::ListSize--;
+					LinkedList::ListSize--;
 				}
 			}
 			void removeEnd()
@@ -164,7 +164,7 @@ public:
 					buffer->PrevNode->NextNode = buffer->NextNode;
 
 					delete buffer;
-					--Extension::LinkedList::ListSize;
+					--LinkedList::ListSize;
 				}
 			}
 
